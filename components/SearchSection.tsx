@@ -38,7 +38,7 @@ const tabs = [
   { id: "car-rental", label: "Car Rental", icon: Car },
 ] as const;
 
-type TabId = (typeof tabs)[number | string]["id"];
+type TabId = (typeof tabs)[number]["id"];
 
 type TabConfig = {
   destinationLabel: string;
@@ -291,12 +291,7 @@ export default function SearchSection() {
                 onKeyDown={handleTabKeyDown}
                 className="grid grid-cols-2 gap-1 rounded-2xl border border-white/70 bg-slate-100/80 p-1.5 sm:grid-cols-4"
               >
-                {[
-                  { id: "flights", label: "Flights", icon: Plane },
-                  { id: "hotels", label: "Hotels", icon: Building2 },
-                  { id: "visa", label: "Visa Assistance", icon: Stamp },
-                  { id: "car-rental", label: "Car Rental", icon: Car },
-                ].map((tab) => {
+                {tabs.map((tab) => {
                   const isActive = activeTab === tab.id;
                   const TabIcon = tab.icon;
 
